@@ -2,6 +2,7 @@
 
 <!-- mcp-name: io.github.taltal-beep/mcp-server-celery -->
 
+[![PyPI](https://img.shields.io/pypi/v/mcp-server-celery)](https://pypi.org/project/mcp-server-celery/)
 [![CI](https://github.com/taltal-beep/mcp-server-celery/actions/workflows/ci.yml/badge.svg)](https://github.com/taltal-beep/mcp-server-celery/actions/workflows/ci.yml)
 
 An MCP server that lets AI agents debug a running Celery deployment. It checks which workers are alive, what each one consumes, and where messages are piling up — the checks you'd otherwise run by hand with `celery inspect` and `rabbitmqctl` every time something gets stuck.
@@ -25,12 +26,6 @@ Requires Python 3.10+ and [uv](https://docs.astral.sh/uv/).
 
 ```bash
 uvx mcp-server-celery
-```
-
-Until the first PyPI release, run it from GitHub:
-
-```bash
-uvx --from git+https://github.com/taltal-beep/mcp-server-celery mcp-server-celery
 ```
 
 ## Configuration
