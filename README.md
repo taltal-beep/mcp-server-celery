@@ -124,6 +124,10 @@ CELERY_BROKER_URL=redis://localhost:6379/0 uv run pytest tests/integration -m in
 
 CI runs them against Redis and RabbitMQ on every push.
 
+### Releasing
+
+Bump the version in `pyproject.toml` and in both `version` fields of `server.json`, commit, then push a `vX.Y.Z` tag. The Release workflow checks that all three versions match the tag, publishes to PyPI, and then publishes `server.json` to the MCP registry.
+
 ## License
 
 MIT
