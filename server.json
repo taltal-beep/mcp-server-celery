@@ -1,0 +1,42 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "name": "io.github.taltal-beep/mcp-server-celery",
+  "description": "Read-only Celery debugging: workers, queue depths and stuck-task diagnosis.",
+  "repository": {
+    "url": "https://github.com/taltal-beep/mcp-server-celery",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "mcp-server-celery",
+      "version": "0.1.0",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
+        {
+          "name": "CELERY_BROKER_URL",
+          "description": "Broker URL, e.g. redis://localhost:6379/0 or amqp://user:pass@host:5672//",
+          "isRequired": true,
+          "isSecret": true
+        },
+        {
+          "name": "CELERY_RESULT_BACKEND",
+          "description": "Result backend URL, needed for task_status",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "CELERY_APP",
+          "description": "Import path of your Celery app (e.g. proj.celery:app) to pick up its queues and routes",
+          "isRequired": false
+        },
+        {
+          "name": "CELERY_INSPECT_TIMEOUT",
+          "description": "Seconds to wait for worker replies (default 1.0)",
+          "isRequired": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+[project]
+name = "mcp-server-celery"
+version = "0.1.0"
+description = "Read-only MCP server for debugging Celery: workers, queue depths, and stuck tasks."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Ariel Even" }]
+requires-python = ">=3.10"
+keywords = ["mcp", "celery", "model-context-protocol", "debugging", "rabbitmq", "redis"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Framework :: Celery",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Topic :: System :: Monitoring",
+]
+dependencies = [
+    "celery>=5.3",
+    "fastmcp>=4.1",
+    "mcp>=2.3",
+    "redis>=5.0",
+]
+
+[project.urls]
+Repository = "https://github.com/taltal-beep/mcp-server-celery"
+Issues = "https://github.com/taltal-beep/mcp-server-celery/issues"
+
+[project.scripts]
+mcp-server-celery = "mcp_server_celery.server:main"
+
+[build-system]
+requires = ["uv_build>=0.8,<0.14"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff>=0.15",
+]
+
+[tool.pytest.ini_options]
+markers = ["integration: needs a live broker (set CELERY_BROKER_URL)"]
+filterwarnings = ["error"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S", "BLE"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "S603"]
